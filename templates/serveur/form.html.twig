@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block body %}
+<h1>{{ title }}</h1>
+{{ form_start(form) }}
+    {{ form_widget(form) }}
+    <button type="submit" class="btn btn-primary">{{ buttonLabel|default('Submit') }}</button>
+{{ form_end(form) }}
+<a href="{{ path('app_serveur_list') }}" class="btn btn-link mt-3">Back to List</a>
+{% endblock %}

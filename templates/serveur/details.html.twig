@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Serveur Details{% endblock %}
+
+{% block body %}
+<h1>Serveur Details</h1>
+<div>
+    {% if serveur is not null %}
+        <p><b>Name:</b> {{ serveur.nom | upper }}</p>
+        <p><b>Date of Birth:</b> {{ serveur.dateNaissance ? serveur.dateNaissance|date('Y-m-d') : 'N/A' }}</p>
+    {% else %}
+        <p>Serveur not found.</p>
+    {% endif %}
+    <a href="{{ path('app_serveur_list') }}" class="btn btn-secondary mt-3">Return to List</a>
+</div>
+{% endblock %}

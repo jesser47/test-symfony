@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Restaurant List{% endblock %}
+
+{% block body %}
+<h1>Restaurant List</h1>
+<div>
+    {% if restaurents is not empty %}
+        <ul>
+            {% for restaurent in restaurents %}
+                <li>
+                    <b>{{ restaurent.nom | upper }}</b><br>
+                    Address: {{ restaurent.adresse }}
+                    <a href="{{ path('app_restaurent_details', {id: restaurent.id}) }}">View Details</a>
+                    <a href="{{ path('app_restaurent_edit', {id: restaurent.id}) }}">Edit</a>
+                    <form action="{{ path('app_restaurent_delete', {id: restaurent.id}) }}" method="post" style="display:inline;">
+                        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ restaurent.id) }}">
+                        <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this restaurant?');">Delete</button>
+                    </form>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No restaurants found.</p>
+    {% endif %}
+</div>
+{% endblock %}

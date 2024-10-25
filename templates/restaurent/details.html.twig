@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Restaurant Details{% endblock %}
+
+{% block body %}
+<h1>Restaurant Details</h1>
+<div>
+    {% if restaurent is not null %}
+        <p><b>Name: </b> {{ restaurent.nom | upper }}</p>
+        <p><b>Address: </b> {{ restaurent.adresse | upper }}</p>
+    {% else %}
+        <p>Restaurant not found.</p>
+    {% endif %}
+    <a href="{{ path('app_restaurent_list') }}">Return to List</a>
+</div>
+{% endblock %}
